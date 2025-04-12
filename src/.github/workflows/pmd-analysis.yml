@@ -1,0 +1,43 @@
+name: PMD Code Analysis
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  pmd-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Download PMD 7.9.0
+        run: |
+          curl -L -o pmd-bin.zip https://github.com/pmd/pmd/releases/download/pmd_releases%2F7.9.0/pmd-dist-7.9.0-bin.zip
+          unzip pmd-bin.zip
+          mv pmd-dist-7.9.0 pmd
+
+      - name: Run PMD with custom ruleset
+        run: |
+          ./pmd/bin/pmd check \
+            --dir src \
+            --rulesets config/pmd/custom-java-ruleset.xml \
+            --aux-classpath config/pmd/pmd-java-custom-1.0.0-SNAPSHOT.jar \
+            --report-format html \
+            --report-file pmd-report.html
+
+      - name: Upload PMD HTML Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: pmd-html-report
+          path: pmd-report.html
+

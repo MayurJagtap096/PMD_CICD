@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Custom Ruleset"
+    xmlns="https://pmd.github.io/pmd/ruleset/3.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/3.0.0 https://pmd.sourceforge.io/ruleset_3_0_0.xsd">
+
+    <description>
+Custom Ruleset
+    </description>
+
+    <rule ref="category/java/design.xml/LawOfDemeter">
+        <properties>
+            <property name="trustRadius" value="1" />
+        </properties>
+    </rule>
+    <rule ref="category/java/design.xml/LoosePackageCoupling">
+        <properties>
+            <property name="packages" value="some.package;" />
+            <property name="classes" value="" />
+        </properties>
+    </rule>
+    <rule ref="category/java/security.xml/HardCodedCryptoKey" />
+    <rule ref="category/java/design.xml/CyclomaticComplexity" />
+
+    <!-- Following rules are custom built -->
+    <rule ref="net/sourceforge/pmd/examples/java/rules/AdequateCommentsRule.xml/AdequateCommentsRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/TooManyBranchesRule.xml/TooManyBranchesRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/TooManyBooleanExpressionsRule.xml/TooManyBooleanExpressionsRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/NestedTryCatchRule.xml/NestedTryCatchRule" />    
+    <rule ref="net/sourceforge/pmd/examples/java/rules/ClassHierarchyDepthRule.xml/ClassHierarchyDepthRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/HardCodedStringRule.xml/HardCodedStringRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/HardCodedNumberRule.xml/HardCodedNumberRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/NcssCountRule.xml/NcssCountRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/ExcessiveImportsRule.xml/ExcessiveImportsRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/ExcessiveParameterListRule.xml/ExcessiveParameterListRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/ExcessivePublicCountRule.xml/ExcessivePublicCountRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/TooManyMethodsRule.xml/TooManyMethodsRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/TooManyFieldsRule.xml/TooManyFieldsRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/TooManyReturnRule.xml/TooManyReturnRule" />
+    <rule ref="net/sourceforge/pmd/examples/java/rules/CouplingRule.xml/CouplingRule" />
+
+</ruleset>
