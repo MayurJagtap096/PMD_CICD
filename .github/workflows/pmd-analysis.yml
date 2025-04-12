@@ -31,12 +31,14 @@ jobs:
       - name: Rename PMD folder
         run: mv pmd-bin-7.9.0 pmd
 
+      - name: Add custom rules JAR to PMD lib
+        run: cp config/pmd/pmd-java-custom-1.0.0-SNAPSHOT.jar pmd/lib/
+
       - name: Run PMD with custom ruleset
         run: |
           ./pmd/bin/pmd check \
             --dir src \
             --rulesets src/config/pmd/custom-java-ruleset.xml \
-            --aux-classpath src/config/pmd/pmd-java-custom-1.0.0-SNAPSHOT.jar \
             --format html \
             --report-file pmd-report.html
 
