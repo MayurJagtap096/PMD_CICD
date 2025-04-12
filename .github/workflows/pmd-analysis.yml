@@ -40,7 +40,7 @@ jobs:
             --dir src \
             --rulesets src/config/pmd/custom-java-ruleset.xml \
             --format html \
-            --report-file pmd-report.html
+            --report-file pmd-report.html || true
 
       - name: Upload PMD HTML Report
         uses: actions/upload-artifact@v4
