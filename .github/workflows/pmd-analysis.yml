@@ -24,7 +24,12 @@ jobs:
         run: |
           curl -L -o pmd-bin.zip https://github.com/pmd/pmd/releases/download/pmd_releases%2F7.9.0/pmd-dist-7.9.0-bin.zip
           unzip pmd-bin.zip
-          mv pmd-dist-7.9.0 pmd
+
+      - name: Debug unzip output
+        run: ls -la
+
+      - name: Rename PMD folder
+        run: mv pmd-bin-7.9.0 pmd
 
       - name: Run PMD with custom ruleset
         run: |
@@ -40,4 +45,3 @@ jobs:
         with:
           name: pmd-html-report
           path: pmd-report.html
-
