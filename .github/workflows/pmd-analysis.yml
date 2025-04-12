@@ -32,7 +32,7 @@ jobs:
         run: mv pmd-bin-7.9.0 pmd
 
       - name: Add custom rules JAR to PMD lib
-        run: cp config/pmd/pmd-java-custom-1.0.0-SNAPSHOT.jar pmd/lib/
+        run: cp src/config/pmd/pmd-java-custom-1.0.0-SNAPSHOT.jar pmd/lib/
 
       - name: Run PMD with custom ruleset
         run: |
